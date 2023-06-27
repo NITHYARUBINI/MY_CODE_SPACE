@@ -1,0 +1,51 @@
+#include <stdio.h>
+int remove_min(n);
+int remove_max(n);
+
+
+int main(){
+
+int n;
+scanf("%d", &n);
+
+n = remove_min(n);
+n = remove_max(n);
+printf("%d", n);
+return 0;
+}
+
+
+int remove_max(n){
+    int max = n%10,maxd=1,c=0, x=n;
+    while(x){
+    int d = x%10;
+    c++;
+    if(d>max){
+        maxd = c;
+        max = d;
+    }
+
+    x = x/10;
+
+}
+n = (n/(int)pow(10, maxd))*pow(10, maxd-1) +n%(int)(pow(10, maxd-1));
+return n;
+}
+
+int remove_min(int n){
+
+    int min = n%10, c=0, x=n, mind=1;
+    while(x){
+    int d = x%10;
+    c++;
+    if(d<min){
+        mind = c;
+        min = d;
+    }
+
+    x = x/10;
+
+}
+    n = (n/(int)pow(10, mind))*pow(10, mind-1) +n%(int)(pow(10, mind-1));
+    return n;
+}
