@@ -1,0 +1,35 @@
+#include <stdio.h>
+#include <string.h>
+
+int main()
+{
+    int n;
+    scanf("%d", &n);
+    char str[n][20];
+    for(int i=0; i<n; i++){
+        scanf("%s", str[i]);
+    }
+    
+    
+    int res = 0;
+    
+    for(int i=1; i<n; i++){
+        if(str[res][0]>str[i][0]){
+            res = i;
+        }
+        
+        else if(str[res][0]==str[i][0]){
+            int l1=strlen(str[res]), l2 = strlen(str[i]);
+            int j=1;
+            while((j<l1 && j<l2)&&(str[res][j]==str[i][j])){
+                j++;
+            }
+            if(str[res][j]>str[i][j]){
+                res = i;
+            }
+        }
+    }
+    
+    printf("\n%s", str[res]);
+    return 0;
+}
